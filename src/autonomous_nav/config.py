@@ -1,0 +1,25 @@
+"""Configuration constants for the navigation simulation."""
+
+ROWS = 18
+COLS = 24
+CELL_SIZE = 30
+
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 680
+FPS = 60
+MOVE_INTERVAL_MS = 180
+
+START = (1, 1)  # (row, column)
+GOAL = (16, 22)
+
+# RGB colors
+BACKGROUND = (245, 247, 250)
+GRID_COLOR = (210, 215, 223)
+OBSTACLE_COLOR = (55, 65, 81)
+PATH_COLOR = (250, 204, 21)
+VISITED_COLOR = (191, 219, 254)
+START_COLOR = (34, 197, 94)
+GOAL_COLOR = (239, 68, 68)
+ROBOT_COLOR = (37, 99, 235)
+TEXT_COLOR = (31, 41, 55)
+PANEL_COLOR = (255, 255, 255)
