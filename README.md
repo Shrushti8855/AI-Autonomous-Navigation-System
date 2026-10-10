@@ -1,146 +1,146 @@
 # AI-Based Autonomous Navigation System
 
-A Python-based autonomous navigation simulation that demonstrates grid-based path planning, obstacle-aware movement, and interactive visualization using the A* search algorithm.
+A grid-based autonomous navigation simulation built with Python, Pygame, and the A* pathfinding algorithm. The system plans a collision-free route around obstacles and simulates a robot navigating from a starting position to a destination.
 
 ## Overview
 
-This project simulates a robot navigating a two-dimensional environment from a starting position to a target while avoiding static obstacles.
+This project demonstrates the fundamentals of autonomous navigation, including environment modeling, obstacle avoidance, path planning, and robot movement in a 2D simulation.
 
-The project demonstrates core concepts in robotics software, search algorithms, environment representation, movement validation, software testing, and simulation.
-
-**Current implementation:** Classical A* path planning with a custom Pygame simulation. It does not yet include a trained machine-learning model or camera-based object detection.
-
-## Problem Statement
-
-Autonomous robots need to identify traversable space, find suitable routes, and move toward destinations without colliding with obstacles. This project implements a simplified virtual environment to explore the planning and navigation components of that problem.
+The robot operates in a grid environment containing obstacles. The A* search algorithm calculates a valid route from the start to the goal, and the simulation visualizes the planned path and robot position.
 
 ## Features
 
-* Interactive 2D grid-based simulation
-* Start and destination configuration
-* Static obstacle representation
-* A* path planning with Manhattan distance
-* Collision checks before each movement
-* Live visualization of the robot and planned route
-* Pause, restart, and screenshot controls
-* Automated unit tests
+* **A* Path Planning:** Finds a route from the start to the destination.
+* **Obstacle Avoidance:** Plans paths that do not cross blocked grid cells.
+* **2D Simulation:** Visualizes the environment using Pygame.
+* **Robot Navigation:** Simulates movement along the planned route.
+* **Navigation Visualization:** Displays the start, goal, robot, planned path, and obstacles.
+* **Navigation Statistics:** Reports route length and collision attempts.
+* **Automated Tests:** Validates pathfinding behavior and important edge cases.
 
 ## Technology Stack
 
-* Python 3.12
+* Python
 * Pygame
 * NumPy
-* A* search algorithm
-* pytest
+* A* Search Algorithm
+* Pytest
+* Git and GitHub
 
-## Architecture
-
-1. Environment: represents free cells and obstacles.
-2. Planner: calculates a route using A*.
-3. Controller: follows the route with safety checks.
-4. Visualization: displays the map, robot, route, and status.
-5. Tests: verify route validity and important edge cases.
-
-## Project Structure
+## Project Architecture
 
 ```text
-src/autonomous_nav/  Application modules
-tests/               Automated tests
-outputs/             Generated simulation outputs
-images/              README screenshots
-videos/              Demo recordings
-docs/                Architecture documentation
-main.py              Application entry point
-requirements.txt     Python dependencies
+AI-Autonomous-Navigation-System/
+├── src/
+│   └── autonomous_nav/
+│       ├── config.py
+│       ├── controller.py
+│       ├── environment.py
+│       ├── main.py
+│       ├── planner.py
+│       └── visualization.py
+├── tests/
+│   └── test_planner.py
+├── docs/
+│   └── architecture.md
+├── images/
+├── outputs/
+├── videos/
+├── main.py
+└── requirements.txt
 ```
 
-## Installation
+### Main Components
 
-Create and activate a virtual environment:
+* **Environment:** Creates the grid and defines obstacles, start, and goal positions.
+* **Planner:** Uses A* to search for a valid route.
+* **Controller:** Manages robot movement and navigation state.
+* **Visualization:** Displays the grid, obstacles, route, robot, and navigation information.
+* **Tests:** Check route validity, obstacle avoidance, adjacency, and edge cases.
+
+## Getting Started
+
+### Prerequisites
+
+* Python 3.12 recommended
+* pip
+* Git (optional, for cloning the repository)
+
+### 1. Clone the repository
 
 ```bash
-python -m venv .venv
+git clone https://github.com/Shrushti8855/AI-Autonomous-Navigation-System.git
+cd AI-Autonomous-Navigation-System
 ```
 
-Windows PowerShell:
+### 2. Create a virtual environment
+
+**Windows PowerShell:**
 
 ```powershell
+py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-macOS/Linux:
+If PowerShell blocks activation, run:
 
-```bash
-source .venv/bin/activate
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+.\.venv\Scripts\Activate.ps1
 ```
 
-Install dependencies:
+### 3. Install dependencies
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-## Run the Simulation
+### 4. Run the simulation
 
 ```bash
 python main.py
 ```
 
-Controls:
+The simulation displays the navigation environment and reports the planned route and navigation results in the terminal.
 
-* SPACE: Pause/resume
-* R: Restart
-* S: Save a screenshot
-* ESC: Exit
-
-## Run Tests
+### 5. Run the tests
 
 ```bash
-python -m pytest -v
+python -m pytest tests/test_planner.py -v
 ```
 
-## Simulation Demo
+## Current Test Results
 
-Add a screenshot of your actual successful run here:
+The current implementation passes all five planner tests:
 
-![Navigation simulation](images/navigation_demo.png)
+| Test                     | Result |
+| ------------------------ | ------ |
+| Path exists              | Passed |
+| Path avoids obstacles    | Passed |
+| Path uses adjacent cells | Passed |
+| Blocked goal has no path | Passed |
+| Start equals goal        | Passed |
 
-## Results
+## Example Output
 
-Record results from actual executions:
+The current simulation run produced:
 
-* Goal reached: [record observed result]
-* Route length: [record measured steps]
-* Collision attempts: [record observed value]
-* Automated tests: [record passing/total tests]
-
-Do not report unmeasured performance values.
-
-## Limitations
-
-* Known map rather than camera-derived perception
-* Static obstacles in the default scenario
-* Grid-based movement rather than physical vehicle dynamics
-* No trained object detection or machine-learning model
-* No ROS integration or hardware control
+```text
+A* planner initialized.
+Start: (1, 1)
+Goal: (16, 22)
+Planned route steps: 36
+SUCCESS: Robot reached the goal.
+Collision attempts: 0
+```
 
 ## Future Improvements
 
-* Dynamic obstacles and automatic replanning
-* OpenCV-based visual perception
-* Webots or ROS 2 integration
-* Multiple path-planning algorithms for comparison
-* Robot motion and sensor simulation
-* Performance benchmarks and additional test scenarios
-
-## Learning Outcomes
-
-* A* search and heuristic functions
-* Grid maps and environment representation
-* Modular Python application design
-* Interactive simulation with Pygame
-* Automated testing with pytest
-* Git, GitHub, and technical documentation
+* Add interactive obstacle placement.
+* Compare A* with Dijkstra's algorithm and other path planners.
+* Add dynamic obstacles and re-planning.
+* Record simulation videos and performance metrics.
+* Explore integration with a realistic robotics simulator.
 
 ## Author
 
@@ -148,4 +148,6 @@ Do not report unmeasured performance values.
 
 GitHub: [Shrushti8855](https://github.com/Shrushti8855)
 
-This is an educational software simulation developed to explore autonomous navigation and robotics concepts.
+---
+
+*This project is an educational 2D navigation simulation and does not represent a complete real-world autonomous-driving system.*
